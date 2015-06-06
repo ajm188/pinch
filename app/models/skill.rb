@@ -1,0 +1,2 @@
+class Skill < Tag
+end
