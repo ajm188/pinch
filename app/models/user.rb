@@ -10,5 +10,11 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :events
 
+  belongs_to :non_profit
+
   validates :name, presence: true, allow_blank: false
+
+  def non_profit?
+    non_profit_id.present?
+  end
 end
