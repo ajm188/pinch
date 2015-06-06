@@ -33,3 +33,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'rspec-rails'
 end
+
+group :test do
+  gem 'shoulda-matchers', require: false
+end
