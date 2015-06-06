@@ -26,11 +26,68 @@ ActiveRecord::Schema.define(version: 20150606215946) do
     t.datetime "end_time"
   end
 
+  create_table "interests", force: :cascade do |t|
+    t.integer  "user_interest_id"
+    t.string   "name"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "interests", ["name"], name: "index_interests_on_name", using: :btree
+
   create_table "non_profits", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "professions", force: :cascade do |t|
+    t.integer  "user_profession_id"
+    t.string   "name"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "professions", ["name"], name: "index_professions_on_name", using: :btree
+
+  create_table "skills", force: :cascade do |t|
+    t.integer  "user_skill_id"
+    t.string   "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "skills", ["name"], name: "index_skills_on_name", using: :btree
+
+  create_table "user_interests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "interest_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "user_interests", ["interest_id"], name: "index_user_interests_on_interest_id", using: :btree
+  add_index "user_interests", ["user_id"], name: "index_user_interests_on_user_id", using: :btree
+
+  create_table "user_professions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "profession_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "user_professions", ["profession_id"], name: "index_user_professions_on_profession_id", using: :btree
+  add_index "user_professions", ["user_id"], name: "index_user_professions_on_user_id", using: :btree
+
+  create_table "user_skills", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_skills", ["skill_id"], name: "index_user_skills_on_skill_id", using: :btree
+  add_index "user_skills", ["user_id"], name: "index_user_skills_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
