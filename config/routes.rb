@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     member do
       resources :events, only: [:index], param: :event_id
     end
+    member do
+      resources :posts, only: [:index], param: :post_id
+    end
   end
 end
