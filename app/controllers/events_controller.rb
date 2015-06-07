@@ -6,11 +6,11 @@ class EventsController < ApplicationController
   def index
     if params[:user_id]
       @events = User.find(params[:user_id]).events
-                    .where("start_time > ?", DateTime.now)
     else
       @events = Event.all
     end
     @events = @events.order(start_time: :desc)
+                      .where("start_time > ?", DateTime.now)
                       .limit(params[:count])
                       .includes(:non_profit)
                       .reverse
