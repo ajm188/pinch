@@ -6,9 +6,18 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     if params[:id]
-      @events = User.find(params[:id]).events.includes(:non_profit)
+      @events = User.find(params[:id]).events
+                    .where("start_time > ?", DateTime.now)
+                    .order(start_time: :desc)
+                    .limit(params[:count])
+                    .includes(:non_profit)
+                    .reverse
     else
-      @events = Event.all.includes(:non_profit)
+      @events = Event.all
+                    .order(start_time: :desc)
+                    .limit(params[:count])
+                    .includes(:non_profit)
+                    .reverse
     end
   end
 
