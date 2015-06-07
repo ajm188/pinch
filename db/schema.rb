@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607033736) do
+ActiveRecord::Schema.define(version: 20150606230022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,9 @@ ActiveRecord::Schema.define(version: 20150607033736) do
   end
 
   create_table "interests", force: :cascade do |t|
-    t.integer  "user_interest_id"
     t.string   "name"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "interests", ["name"], name: "index_interests_on_name", using: :btree
@@ -42,32 +41,20 @@ ActiveRecord::Schema.define(version: 20150607033736) do
   end
 
   create_table "professions", force: :cascade do |t|
-    t.integer  "user_profession_id"
     t.string   "name"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "professions", ["name"], name: "index_professions_on_name", using: :btree
 
   create_table "skills", force: :cascade do |t|
-    t.integer  "user_skill_id"
     t.string   "name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "skills", ["name"], name: "index_skills_on_name", using: :btree
-
-  create_table "user_events", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "user_events", ["event_id"], name: "index_user_events_on_event_id", using: :btree
-  add_index "user_events", ["user_id"], name: "index_user_events_on_user_id", using: :btree
+  add_index "skills", ["name"], name: "index_skills_on_name", using: :btree
 
   create_table "user_interests", force: :cascade do |t|
     t.integer  "user_id"
