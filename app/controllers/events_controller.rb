@@ -1,4 +1,3 @@
-require 'byebug'
 class EventsController < ApplicationController
   before_action :set_event, only: [:show]
 
@@ -8,17 +7,13 @@ class EventsController < ApplicationController
     if params[:user_id]
       @events = User.find(params[:user_id]).events
                     .where("start_time > ?", DateTime.now)
-                    .order(start_time: :desc)
-                    .limit(params[:count])
-                    .includes(:non_profit)
-                    .reverse
     else
       @events = Event.all
-                    .order(start_time: :desc)
-                    .limit(params[:count])
-                    .includes(:non_profit)
-                    .reverse
     end
+    @events = @events.order(start_time: :desc)
+                      .limit(params[:count])
+                      .includes(:non_profit)
+                      .reverse
   end
 
   # GET /events/1
