@@ -1,4 +1,4 @@
-json.name @user.name
+json.extract! @user, :name, :allow_contact
 json.skills do
   json.array! @user.skills do |skill|
     json.id skill.id
