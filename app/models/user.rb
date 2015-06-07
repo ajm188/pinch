@@ -19,8 +19,6 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, allow_blank: false
 
-  accepts_nested_attributes_for :skills
-
   def non_profit?
     non_profit_id.present?
   end
