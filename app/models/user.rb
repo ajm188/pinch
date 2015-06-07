@@ -3,9 +3,14 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :professions
-  has_many :interests
-  has_many :skills
+
+  has_many :user_professions
+  has_many :user_interests
+  has_many :user_skills
+
+  has_many :professions, through: :user_professions
+  has_many :interests, through: :user_interests
+  has_many :skills, through: :user_skills
 
   has_many :posts
 
