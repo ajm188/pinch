@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     render :show
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     if @user.update(process_params)
       @user.professions = [] if process_params["professions"].nil?
       @user.skills = [] if process_params["skills"].nil?
