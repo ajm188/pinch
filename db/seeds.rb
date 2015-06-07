@@ -18,6 +18,7 @@ professions = Faker::Lorem.words(20).map {|name| Profession.where({name: name}).
     interests: interests.sample(3),
     skills: skills.sample(2),
     professions: professions.sample(1),
+    allow_contact: [true, false].sample
   })
 end
 
