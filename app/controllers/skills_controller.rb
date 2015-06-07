@@ -1,6 +1,6 @@
 class SkillsController < ApplicationController
   def index
-    @skills = User.find(params[:])
+    @skills = User.find(params[:id])
     render :index
   end
   def create
