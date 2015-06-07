@@ -1,2 +1,34 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<div class="row clearfix">
+  <div class="container">
+    <div class="column full">
+      <h1>Events</h1>
+
+      <div class="ui feed">
+      <% @events.each do |event| %>
+
+        <div class="event" id="event-<%= event.id %>">
+          <div class="label">
+            <i class="circular calendar icon"></i>
+          </div>
+          <div class="content">
+            <div class="date">in <%= time_ago_in_words event.start_time %></div>
+            <div class="header"><%= event.title %></div>
+            <div class="summary">
+              <%= event.description %>
+            </div>
+            <div class="meta">
+              <a class="like">
+                <i class="user icon"></i> <%= Random.rand(30) %> people volunteering
+              </a>
+            </div>
+          </div>
+          <a class="more-info" href="/events/<%= event.id %>">More Info</a>
+        </div>
+        <div class="ui divider"></div>
+
+      <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

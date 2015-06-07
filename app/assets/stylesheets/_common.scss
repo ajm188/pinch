@@ -16,6 +16,10 @@ footer {
 
 }
 
+a {
+  cursor: pointer;
+}
+
 #header {
   top: 0;
   width: 100%;
@@ -83,7 +87,17 @@ p {
   float: right;
 
   .link {
-    padding: 1em;
+
+    margin: 1em;
+
+    a{
+      color: black !important;
+
+      &:visited {
+        color: black !important;
+      }
+    }
+
   }
 }
 
@@ -137,4 +151,64 @@ p {
 
 h1.login {
   text-align: center;
+}
+
+.event {
+  position: relative;
+}
+
+.event .more-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.event-title {
+  display: inline;
+}
+
+.event-info {
+  padding-left: 5em;
+}
+
+h2 i {
+  margin-right: 0.7em !important;
+}
+
+.app-img {
+  margin: 2em auto;
+}
+
+.coin {
+  background-color: #f7f7f7;
+  text-align: center;
+
+  .coin-image {
+    border-radius: 50%;
+  }
+
+  p {
+    margin: auto;
+    max-width: 28rem;
+  }
+
+}
+
+svg {
+  fill: white;
+  margin: auto;
+  display: block;
+  * {
+    stroke-width: 10;
+  }
+
+}
+
+.third {
+  text-align: center;
+
+  p {
+    margin: 1em 0;
+  }
+
 }

@@ -1,0 +1,17 @@
+<div class="row clearfix">
+  <div class="container">
+    <div class="column full">
+      <h1 class="event-title"><%= @event.title %></h1>
+      <div class="ui button turquoise right floated">Pinch-In!</div>
+      <div class="ui divider"></div>
+      <h2><i class="ui small icon question floated"></i>About the event</h2>
+      <p class="event-info"><%= @event.description %></p>
+      <h2><i class="ui small icon calendar floated"></i>When?</h2>
+       <p class="event-info"><%= @event.start_time.strftime "%A, %B %d at %I:%M%p" %>  -  <%= @event.end_time.strftime "%A, %B %d at %I:%M%p" %></p>
+      <h2><i class="ui small icon marker floated"></i>Where?</h2>
+      <p class="event-info" ><%= @event.location.address %></p>
+      <h2><i class="ui small icon users floated"></i>Who am I helping?</h2>
+      <p class="event-info" ><%= @event.non_profit.name %></p>
+    </div>
+  </div>
+</div>
