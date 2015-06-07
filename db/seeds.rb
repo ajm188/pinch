@@ -31,7 +31,7 @@ nonprofits = (1..20).map { NonProfit.create!({name: Faker::Company.name}) }
     start_time: start_time,
     end_time: Faker::Time.between(start_time, start_time + 5.hours),
     non_profit: nonprofits.sample,
-    # location: Faker::Address.street_address,
+    location: Location.create!({address: Faker::Address.street_address}),
   })
 end
 
