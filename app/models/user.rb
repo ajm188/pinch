@@ -13,7 +13,9 @@ class User < ActiveRecord::Base
   has_many :skills, through: :user_skills
 
   has_many :posts
-  has_many :events
+
+  has_many :users_events
+  has_many :events, through: :users_events
 
   belongs_to :non_profit
 
