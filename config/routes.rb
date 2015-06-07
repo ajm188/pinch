@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  resources :nonprofits
+
   resources :users, only: [:show, :update], param: :user_id do
     member do
       resources :events, only: [:index], param: :event_id
