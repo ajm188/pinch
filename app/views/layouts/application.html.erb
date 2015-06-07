@@ -2,6 +2,10 @@
 <html>
 <head>
   <title>Pinch</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/grid.css">
+  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,6 +13,28 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <header id="header">
+      <div class="container">
+        <h1 class="ui logo header"><a href="/">Pinch</a></h1>
+        <div class="ui button mini turquoise sign">
+          <% if user_signed_in? %>
+            <%= link_to 'SignOut', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'SignIn', new_user_session_path %>
+          <% end %>
+        </div>
+        <ul class="links">
+          <li class="link">Home</li>
+          <li class="link">Nonprofits</li>
+        </ul>
+      </div>
+    </header>
+    <div class="header-spacer">
+      <%= yield %>
+    </div>
+    <footer>
+      <p>Created at San Francisco Day of Civic Hacking 2015</p>
+    </footer>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.js"></script>
   </body>
 </html>

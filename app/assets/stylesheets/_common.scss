@@ -1,0 +1,140 @@
+$header-height: 6em;
+
+body, html {
+  background-color: white;
+  overflow-x: hidden;
+}
+
+html {
+  position: relative;
+  height: auto;
+  min-height: 100%;
+}
+
+header,
+footer {
+
+}
+
+#header {
+  top: 0;
+  width: 100%;
+  padding: 1em;
+  position: fixed;
+  background-color: white;
+  z-index: 1;
+
+  h1 {
+    display: inline-block;
+    margin: 0;
+
+    a {
+      color: inherit;
+
+      &:visited {
+        color: inherit;
+      }
+    }
+
+  }
+
+  .sign {
+    float: right;
+    margin: 0.4em 1em;
+  }
+
+}
+
+footer {
+  text-align: center;
+  padding: 1em 0;
+  position: absolute;
+  bottom: 1em;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+}
+
+ul {
+  margin: 0;
+
+  li {
+    list-style-type: none;
+    display: inline-block;
+  }
+}
+
+img {
+  margin: auto;
+  display: block;
+}
+
+p {
+  font-size: 120%;
+}
+
+.header-spacer {
+  margin-top: $header-height;
+}
+
+.links {
+  position: relative;
+  float: right;
+
+  .link {
+    padding: 1em;
+  }
+}
+
+.inverted {
+  color: white;
+  background-color: $c-pinch;
+}
+
+.button.turquoise {
+  background-color: $c-pinch;
+  color: white;
+
+  &:hover {
+    background-color: lighten($c-pinch, 10%);
+    color: white;
+  }
+}
+
+.hero-volunteer {
+  background-image: url('http://static.wixstatic.com/media/2904c5_3e980805dda64e8aba55a01a14471b7a.jpg_1024');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+
+.login.form {
+  max-width: 28rem;
+  position: relative;
+  margin: auto;
+
+  .devise-links {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 1em;
+
+    a {
+      padding-left: 1em;
+    }
+
+  }
+
+  .ui.checkbox {
+    float: right;
+
+    label {
+      font-size: 0.8em;
+    }
+  }
+}
+
+h1.login {
+  text-align: center;
+}
