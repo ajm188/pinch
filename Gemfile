@@ -33,3 +33,16 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'rspec-rails'
 end
+
+# Use Unicorn
+gem 'unicorn'
+
+group :deployement do
+  # Use Capistrano for deployment
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano-unicorn-nginx'
+  gem 'capistrano-postgresql'
+end
