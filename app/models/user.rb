@@ -22,12 +22,16 @@ class User < ActiveRecord::Base
   validates :name, presence: true, allow_blank: false
 
   has_many :friendships
-  # has_many :friends, through: :friends, source: :friend, inverse_of: :inverse_friends
-  # has_many :inverse_friends, through: :friends, source: :user, inverse_of: :friends
 
-  # def friends
-  #   self.friends + self.inverse_friends
-  # end
+  def friends
+    User.find_by_sql([<<-SQL, {user_id: self.id}])
+      (select user_1_id as id from friendships
+      where user_2_id = :user_id)
+      union
+      (select user_2_id as id from friendships
+      where user_1_id = :user_id)
+    SQL
+  end
 
   def non_profit?
     non_profit_id.present?
