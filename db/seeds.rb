@@ -21,13 +21,17 @@ professions = Faker::Lorem.words(20).map {|name| Profession.where({name: name}).
   })
 end
 
-20.times do
+nonprofits = (1..20).map { NonProfit.create!({name: Faker::Company.name}) }
+
+100.times do
   start_time = Faker::Time.between(1.month.ago, 1.month.from_now, :day)
   Event.create!({
     title: Faker::Lorem.sentence(3, true, 6),
     description: Faker::Lorem.paragraph(3, true, 3),
     start_time: start_time,
-    end_time: Faker::Time.between(start_time, start_time + 5.hours)
+    end_time: Faker::Time.between(start_time, start_time + 5.hours),
+    non_profit: nonprofits.sample,
+    # location: Faker::Address.street_address,
   })
 end
 
