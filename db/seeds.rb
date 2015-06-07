@@ -6,11 +6,33 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-peter, katie = User.create!([
-  { name: "Peter", email: "peter@example.com", password: "password" },
-  { name: "Katie", email: "katie@example.com", password: "password2" },
-  ])
+interests = Faker::Lorem.words(20).map {|name| Interest.where({name: name}).first_or_create}
+skills = Faker::Lorem.words(20).map {|name| Skill.where({name: name}).first_or_create}
+professions = Faker::Lorem.words(20).map {|name| Profession.where({name: name}).first_or_create}
 
-peter.skills.create! ([
-  { name: "Ruby on Rails" },
-  ])
+50.times do
+  User.create!({
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password,
+    interests: interests.sample(3),
+    skills: skills.sample(2),
+    professions: professions.sample(1),
+  })
+end
+
+20.times do
+  start_time = Faker::Time.between(1.month.ago, 1.month.from_now, :day)
+  Event.create!({
+    title: Faker::Lorem.sentence(3, true, 6),
+    description: Faker::Lorem.paragraph(3, true, 3),
+    start_time: start_time,
+    end_time: Faker::Time.between(start_time, start_time + 5.hours)
+  })
+end
+
+500.times do
+  user = User.all.sample
+  event = Event.all.sample
+  user.events << event unless user.events.include? event
+end
