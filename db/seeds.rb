@@ -41,3 +41,11 @@ end
   event = Event.all.sample
   user.events << event unless user.events.include? event
 end
+
+User.all.shuffle.each do |user|
+  user.events.shuffle.each do |event|
+    if [true, false].sample
+      Post.create! user: user, event: event
+    end
+  end
+end
