@@ -21,6 +21,14 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, allow_blank: false
 
+  has_many :friendships
+  # has_many :friends, through: :friends, source: :friend, inverse_of: :inverse_friends
+  # has_many :inverse_friends, through: :friends, source: :user, inverse_of: :friends
+
+  # def friends
+  #   self.friends + self.inverse_friends
+  # end
+
   def non_profit?
     non_profit_id.present?
   end
